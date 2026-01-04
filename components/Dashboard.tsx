@@ -327,7 +327,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, data, onLogout }) => {
 
   // --- CARD STATUS LOGIC ---
   const getVendasStatus = (): CardStatus => {
-     if (metrics.metaValue === 0) return 'neutral';
+     if (metrics.metaValue === 0) return 'positive'; // Default to positive if no meta (neutral was blue)
      const pct = (metrics.projectedTotal / metrics.metaValue) * 100;
      if (pct >= 100) return 'positive';
      if (pct >= 95) return 'warning';
@@ -336,7 +336,7 @@ const Dashboard: React.FC<DashboardProps> = ({ user, data, onLogout }) => {
 
   const getBaixasStatus = (): CardStatus => {
       const total = metrics.baixasStats.total;
-      if (total === 0) return 'neutral';
+      if (total === 0) return 'positive'; // Default to positive
       
       const noPrazoPct = (metrics.baixasStats.noPrazo / total) * 100;
       const semBaixaPct = (metrics.baixasStats.semBaixa / total) * 100;
@@ -348,12 +348,12 @@ const Dashboard: React.FC<DashboardProps> = ({ user, data, onLogout }) => {
       if (noPrazoPct >= 90) return 'positive'; // Good performance
       if (semBaixaPct > 20) return 'warning'; // Moderate pending
       
-      return 'neutral';
+      return 'positive'; // Default fallback (was neutral) - Consider "OK" state as Green
   };
 
   const getManifestosStatus = (): CardStatus => {
       const total = metrics.manifestosStats.total;
-      if (total === 0) return 'neutral';
+      if (total === 0) return 'positive'; // Default to positive
       
       const semMdfePct = (metrics.manifestosStats.sem / total) * 100;
       if (semMdfePct === 0) return 'positive';

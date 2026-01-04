@@ -72,7 +72,7 @@ const Card: React.FC<CardProps> = ({
         ${styles.border}
         ${styles.shadow}
         ${isActive ? `ring-2 ${styles.activeRing} shadow-md` : ''} 
-        hover:z-40
+        hover:z-[100]
       `}
     >
       <div className="p-5">
@@ -82,15 +82,15 @@ const Card: React.FC<CardProps> = ({
               <p className="text-xs font-bold text-[#707082] uppercase tracking-wider">{title}</p>
               {tooltip && (
                 <div 
-                  className="relative z-50"
+                  className="relative z-[101]"
                   onMouseEnter={() => setShowTooltip(true)}
                   onMouseLeave={() => setShowTooltip(false)}
                 >
                   <HelpCircle size={14} className="text-gray-300 hover:text-[#4649CF] transition-colors cursor-help" />
                   
-                  {/* Tooltip Popup - Positioned BELOW (top-full) to avoid Header Clipping */}
+                  {/* Tooltip Popup */}
                   {showTooltip && (
-                    <div className="absolute left-0 top-full mt-2 w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl z-50 pointer-events-none animate-fade-in whitespace-normal break-words leading-relaxed text-left">
+                    <div className="absolute left-0 top-full mt-2 w-56 sm:w-64 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl z-[999] pointer-events-none whitespace-normal break-words leading-relaxed text-left">
                       {tooltip}
                       {/* Arrow pointing up */}
                       <div className="absolute left-1.5 -top-1 w-2 h-2 bg-gray-900 transform rotate-45"></div>
