@@ -1,0 +1,5 @@
+{
+  "name": "Painel Operacional Geral - SLE",
+  "description": "Painel de controle operacional para visualização de Vendas, Metas, Baixas e Manifestos integrados via Google Sheets.",
+  "requestFramePermissions": []
+}
